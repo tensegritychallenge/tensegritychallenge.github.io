@@ -1,14 +1,37 @@
+/* ---------------------------------------------------------------------
+   Clemson University brand palette
+   Reference: https://www.clemson.edu/brand/color/
+   Primary:   Clemson Orange #F56600 · Regalia #522D80 · Diploma #2E1A47
+              Goal Line #333333 · White #FFFFFF
+   Secondary: Parchment #EFDBB2 · Tinsmith #C8C9C7 · Software #888B8D
+   --------------------------------------------------------------------- */
 :root {
-  --ink: #08111d;
-  --ink-soft: #101c2a;
-  --paper: #f2f1ea;
-  --warm: #dfd7c9;
-  --line: rgba(8, 17, 29, 0.18);
-  --line-dark: rgba(255, 255, 255, 0.15);
-  --white: #f8f8f3;
-  --orange: #ff6a3d;
-  --acid: #d8ff3e;
-  --blue: #74b7ff;
+  /* primary */
+  --clemson-orange: #f56600;
+  --regalia: #522d80;
+  --diploma: #2e1a47;
+  --goal-line: #333333;
+  --white: #ffffff;
+  /* secondary */
+  --parchment: #efdbb2;
+  --campus-brick: #b94700;
+  --tinsmith: #c8c9c7;
+  --software: #888b8d;
+
+  /* roles */
+  --ink: var(--diploma);
+  --ink-soft: var(--regalia);
+  --paper: #ffffff;
+  --warm: var(--parchment);
+  --body-text: var(--goal-line);
+  --line: rgba(46, 26, 71, 0.2);
+  --line-dark: rgba(255, 255, 255, 0.2);
+  --orange: var(--clemson-orange);
+  --acid: var(--parchment);
+  --blue: var(--parchment);
+
+  --sans: "Libre Franklin", "Franklin Gothic", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Serif 4", "Tiempos Text", "Times New Roman", Times, serif;
   --max: 1280px;
 }
 
@@ -22,9 +45,9 @@ html {
 
 body {
   margin: 0;
-  color: var(--ink);
+  color: var(--body-text);
   background: var(--paper);
-  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -32,6 +55,10 @@ body.menu-open {
   overflow: hidden;
 }
 
+/* Headings use Diploma; running text uses Goal Line (brand text colour).
+   Scoped to the light sections so dark panels keep their own colours. */
+.section-light :is(h1, h2, h3, h4):not(.stretch-goal *),
+.section-warm :is(h1, h2, h3, h4),
 a {
   color: inherit;
   text-decoration: none;
@@ -89,8 +116,8 @@ a {
 .site-header.scrolled {
   height: 66px;
   color: var(--ink);
-  background: rgba(242, 241, 234, 0.92);
-  border-color: rgba(8, 17, 29, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(46, 26, 71, 0.12);
   backdrop-filter: blur(16px);
 }
 
@@ -233,7 +260,7 @@ a {
   bottom: -50vw;
   width: 90vw;
   height: 70vw;
-  background: radial-gradient(ellipse, rgba(116, 183, 255, 0.12), transparent 62%);
+  background: radial-gradient(ellipse, rgba(239, 219, 178, 0.12), transparent 62%);
   content: "";
   pointer-events: none;
 }
@@ -301,13 +328,12 @@ a {
   height: 7px;
   background: var(--orange);
   border-radius: 50%;
-  box-shadow: 0 0 0 5px rgba(255, 106, 61, 0.13);
+  box-shadow: 0 0 0 5px rgba(245, 102, 0, 0.13);
 }
 
 .hero h1,
 .section-heading h2,
 .awards-intro h2,
-.budget-copy h2,
 .join h2 {
   margin: 0;
   font-size: clamp(56px, 7.3vw, 116px);
@@ -318,7 +344,7 @@ a {
 
 h1 em,
 h2 em {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 400;
   letter-spacing: -0.055em;
 }
@@ -333,6 +359,38 @@ h2 em {
   color: rgba(255, 255, 255, 0.7);
   font-size: clamp(17px, 1.4vw, 21px);
   line-height: 1.55;
+}
+
+.hero-points {
+  max-width: 620px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.hero-points li {
+  position: relative;
+  padding-left: 24px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.5;
+}
+
+.hero-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 2px;
+  background: var(--orange);
+}
+
+.hero-points b {
+  color: #fff;
+  font-weight: 750;
 }
 
 .hero-actions {
@@ -415,7 +473,7 @@ h2 em {
   z-index: 3;
   width: 84%;
   height: 24px;
-  background: linear-gradient(180deg, #eef3f6 0%, #8fa0aa 42%, #394957 100%);
+  background: linear-gradient(180deg, #ffffff 0%, var(--tinsmith) 42%, var(--goal-line) 100%);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 20px;
   box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
@@ -443,8 +501,8 @@ h2 em {
   z-index: 1;
   width: 74%;
   height: 1px;
-  background: rgba(216, 255, 62, 0.75);
-  box-shadow: 0 0 8px rgba(216, 255, 62, 0.25);
+  background: rgba(239, 219, 178, 0.75);
+  box-shadow: 0 0 8px rgba(239, 219, 178, 0.25);
 }
 
 .cable-1 { transform: translate(-55%, -50%) rotate(42deg); }
@@ -473,7 +531,7 @@ h2 em {
 }
 
 .payload span {
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: 27px;
   font-style: italic;
 }
@@ -488,7 +546,7 @@ h2 em {
   position: absolute;
   top: 50%;
   left: 50%;
-  border: 1px solid rgba(116, 183, 255, 0.2);
+  border: 1px solid rgba(239, 219, 178, 0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(-20deg);
 }
@@ -540,7 +598,7 @@ h2 em {
 .hero-facts {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid var(--line-dark);
 }
 
@@ -552,12 +610,12 @@ h2 em {
   border-right: 1px solid var(--line-dark);
 }
 
-.hero-facts div:not(:first-child) { padding-left: 32px; }
+.hero-facts div:not(:first-child) { padding-left: 26px; }
 .hero-facts div:last-child { border-right: 0; }
 
 .hero-facts strong {
   color: var(--acid);
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: clamp(28px, 3vw, 42px);
   font-style: italic;
   font-weight: 400;
@@ -723,7 +781,7 @@ h2 em {
 .video-caption a {
   flex: 0 0 auto;
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(255, 106, 61, 0.55);
+  border-bottom: 1px solid rgba(245, 102, 0, 0.55);
   transition: color 180ms ease, border-color 180ms ease;
 }
 
@@ -740,8 +798,8 @@ h2 em {
 
 .section-heading .section-number,
 .awards-intro .section-number,
-.budget-copy .section-number {
-  color: rgba(8, 17, 29, 0.5);
+.budget-figure .section-number {
+  color: rgba(46, 26, 71, 0.75);
 }
 
 .section-heading h2,
@@ -779,14 +837,14 @@ h2 em {
 
 .mission-copy .lead {
   margin-top: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(23px, 2.2vw, 32px);
   line-height: 1.35;
   letter-spacing: -0.025em;
 }
 
 .mission-copy > p:not(.lead) {
-  color: rgba(8, 17, 29, 0.67);
+  color: rgba(46, 26, 71, 0.67);
   font-size: 16px;
   line-height: 1.7;
 }
@@ -807,8 +865,8 @@ h2 em {
 .mission-sequence article:first-child { border-left: 1px solid var(--line); }
 
 .sequence-index {
-  color: rgba(8, 17, 29, 0.5);
-  font-family: Georgia, serif;
+  color: rgba(46, 26, 71, 0.75);
+  font-family: var(--serif);
   font-size: 13px;
   font-style: italic;
 }
@@ -863,7 +921,7 @@ h2 em {
 }
 
 .mission-sequence p {
-  color: rgba(8, 17, 29, 0.62);
+  color: rgba(46, 26, 71, 0.62);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -872,7 +930,7 @@ h2 em {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0;
-  border-top: 1px solid rgba(8, 17, 29, 0.3);
+  border-top: 1px solid rgba(46, 26, 71, 0.3);
   list-style: none;
 }
 
@@ -882,7 +940,7 @@ h2 em {
   align-items: start;
   gap: 32px;
   padding: 30px 0;
-  border-bottom: 1px solid rgba(8, 17, 29, 0.22);
+  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
 }
 
 .program-week,
@@ -902,7 +960,7 @@ h2 em {
 
 .program-title > p {
   margin: 0 0 10px;
-  color: rgba(8, 17, 29, 0.46);
+  color: rgba(46, 26, 71, 0.46);
 }
 
 .program-title h3 {
@@ -914,7 +972,7 @@ h2 em {
 
 .program-description {
   margin: 0;
-  color: rgba(8, 17, 29, 0.65);
+  color: rgba(46, 26, 71, 0.65);
   font-size: 14px;
   line-height: 1.65;
 }
@@ -928,14 +986,14 @@ h2 em {
 
 .program-timing span {
   max-width: 185px;
-  color: rgba(8, 17, 29, 0.62);
+  color: rgba(46, 26, 71, 0.62);
   line-height: 1.45;
 }
 
 .program-timing b { color: var(--orange); }
 
 .program-item-final {
-  border-bottom: 1px solid rgba(8, 17, 29, 0.22);
+  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
 }
 
 .program-item-final .program-title h3 {
@@ -948,9 +1006,9 @@ h2 em {
   border-top: 1px solid var(--line);
 }
 
-.judging .section-number { color: rgba(8, 17, 29, 0.5); }
+.judging .section-number { color: rgba(46, 26, 71, 0.75); }
 .judging .section-heading h2 em { color: var(--orange); }
-.judging .split-heading > p { color: rgba(8, 17, 29, 0.66); }
+.judging .split-heading > p { color: rgba(46, 26, 71, 0.66); }
 
 .requirements-list {
   max-width: var(--max);
@@ -970,7 +1028,7 @@ h2 em {
 
 .requirement-number {
   color: var(--orange);
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: 15px;
   font-style: italic;
 }
@@ -984,7 +1042,7 @@ h2 em {
 
 .requirement p {
   margin: 0;
-  color: rgba(8, 17, 29, 0.64);
+  color: rgba(46, 26, 71, 0.64);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -1020,7 +1078,7 @@ h2 em {
 
 .stretch-goal h3 {
   margin: 9px 0 0;
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: clamp(28px, 3vw, 42px);
   font-style: italic;
   font-weight: 400;
@@ -1045,8 +1103,10 @@ h2 em {
 
 .awards {
   display: grid;
-  grid-template-columns: minmax(330px, 0.8fr) minmax(400px, 1.2fr);
-  gap: 10vw;
+  grid-template-columns: minmax(320px, 0.85fr) minmax(400px, 1.15fr);
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: clamp(38px, 4vw, 56px) clamp(48px, 7vw, 110px);
   border-top: 1px solid var(--line);
 }
 
@@ -1057,7 +1117,7 @@ h2 em {
 .awards-intro > p:last-child {
   max-width: 500px;
   margin: 34px 0 0;
-  color: rgba(8, 17, 29, 0.62);
+  color: rgba(46, 26, 71, 0.62);
   font-size: 17px;
   line-height: 1.65;
 }
@@ -1080,7 +1140,7 @@ h2 em {
   align-self: start;
   padding-top: 5px;
   color: var(--orange);
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: 14px;
   font-style: italic;
 }
@@ -1094,7 +1154,7 @@ h2 em {
 .award-track p {
   max-width: 530px;
   margin: 9px 0 0;
-  color: rgba(8, 17, 29, 0.6);
+  color: rgba(46, 26, 71, 0.6);
   font-size: 13px;
   line-height: 1.55;
 }
@@ -1108,7 +1168,7 @@ h2 em {
 
 .award-track > strong b {
   color: var(--orange);
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: clamp(30px, 3.1vw, 44px);
   font-style: italic;
   font-weight: 400;
@@ -1116,216 +1176,189 @@ h2 em {
 }
 
 .award-track > strong small {
-  color: rgba(8, 17, 29, 0.5);
+  color: rgba(46, 26, 71, 0.75);
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.budget-band {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-  align-items: start;
-  gap: 8vw;
-  padding: 90px clamp(22px, 6vw, 96px);
-  color: var(--ink);
-  background: var(--warm);
+/* Rides in the awards intro column, directly under the prize copy, so the
+   prize money and the build money read as one thought. It comes last in the
+   source so it falls below the prize list once the section is one column. */
+.awards-intro {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.award-track-list {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.budget-note {
+  grid-column: 1;
+  grid-row: 2;
+  padding-top: clamp(30px, 2.8vw, 40px);
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
-.budget-copy h2 {
-  font-size: clamp(38px, 5.7vw, 78px);
+.budget-figure .section-number {
+  margin: 0 0 18px;
 }
 
-.budget-copy h2 strong {
-  display: inline-block;
-  padding-right: 10px;
-  font-family: Georgia, serif;
+.budget-figure strong {
+  display: block;
+  color: var(--campus-brick);
+  font-family: var(--serif);
+  font-size: clamp(46px, 5.2vw, 72px);
   font-style: italic;
   font-weight: 400;
-  color: var(--orange);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
 }
 
-.budget-detail > p {
-  margin: 0 0 25px;
-  font-size: 18px;
-  line-height: 1.55;
+.budget-figure span {
+  display: block;
+  margin-top: 14px;
+  color: rgba(46, 26, 71, 0.82);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .budget-rules {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  margin: 26px 0 0;
+  border-top: 1px solid rgba(46, 26, 71, 0.22);
 }
 
 .budget-rules > div {
-  padding: 22px 22px 22px 0;
+  display: grid;
+  gap: 7px;
+  padding: 17px 0;
+  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
 }
 
-.budget-rules > div + div {
-  padding-right: 0;
-  padding-left: 22px;
-  border-left: 1px solid var(--line);
-}
-
-.budget-rules span {
-  display: block;
-  margin-bottom: 9px;
-  color: var(--orange);
-  font-size: 9px;
+.budget-rules dt {
+  color: var(--regalia);
+  font-size: 10px;
   font-weight: 750;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.budget-rules p {
+.budget-rules dd {
   margin: 0;
-  color: rgba(8, 17, 29, 0.68);
+  color: rgba(46, 26, 71, 0.82);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.budget-footnote {
+  margin: 18px 0 0;
+  color: rgba(46, 26, 71, 0.75);
   font-size: 13px;
   line-height: 1.55;
 }
 
-.budget-detail small {
-  display: block;
-  padding-top: 20px;
+/* Supporter strip at the foot of the organizers section.
+   Partner logos are supplied artwork: never recoloured, distorted or given
+   effects. Each is sized by height so it keeps its own proportions, and the
+   row gap holds the clear space around every mark. */
+.support-strip {
+  max-width: var(--max);
+  margin: 58px auto 0;
+  padding-top: 44px;
+  border-top: 1px solid var(--line);
+}
+
+.support-label {
+  margin: 0 0 30px;
+  color: rgba(46, 26, 71, 0.78);
   font-size: 10px;
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: 0.09em;
+  font-weight: 750;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.support {
+.support-logos {
   display: grid;
-  grid-template-columns: minmax(280px, 0.65fr) minmax(0, 1.35fr);
-  align-items: center;
-  gap: 9vw;
-  padding: 110px clamp(22px, 9vw, 150px);
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 38px clamp(40px, 5vw, 72px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.support-mark {
-  position: relative;
-  display: grid;
-  width: min(100%, 390px);
-  aspect-ratio: 1;
-  place-content: center;
-  border: 1px solid var(--line);
-  border-radius: 50%;
+/* Every mark is optically centred in one fixed-height band, so the three
+   logo centres share a line, and each sits centred over its own caption. */
+.support-logos li {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 18px;
   text-align: center;
 }
 
-.support-mark::before,
-.support-mark::after {
-  position: absolute;
-  border: 1px solid rgba(8, 17, 29, 0.1);
-  border-radius: 50%;
-  content: "";
-}
-
-.support-mark::before {
-  inset: 13%;
-}
-
-.support-mark::after {
-  inset: -5% 23%;
-  transform: rotate(58deg);
-}
-
-.support-mark span {
-  position: relative;
-  z-index: 2;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(56px, 7vw, 92px);
-  font-style: italic;
-  letter-spacing: -0.075em;
-}
-
-.support-mark i {
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: 65%;
-  height: 4px;
-  margin: 4px auto 13px;
-  background: var(--orange);
-  transform: rotate(-8deg);
-}
-
-.support-mark small {
-  position: relative;
-  z-index: 2;
-  font-size: 9px;
-  font-weight: 750;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-}
-
-.support-copy {
-  max-width: 790px;
-}
-
-.support-copy .section-number {
-  color: rgba(8, 17, 29, 0.5);
-}
-
-.support-copy h2 {
-  max-width: 760px;
+.support-name {
+  max-width: 26ch;
   margin: 0;
-  font-size: clamp(38px, 4.8vw, 70px);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
+  color: rgba(46, 26, 71, 0.82);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
-.support-copy > p:not(.section-number) {
-  max-width: 690px;
-  margin: 30px 0 26px;
-  color: rgba(8, 17, 29, 0.65);
-  font-size: 17px;
-  line-height: 1.68;
+.support-logos a {
+  display: block;
+  transition: opacity 180ms ease;
 }
 
-.support-copy > a {
-  display: inline-flex;
+.support-logos a:hover,
+.support-logos a:focus-visible {
+  opacity: 0.7;
+}
+
+.support-logos img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+}
+
+.support-logos li a {
+  display: flex;
   align-items: center;
-  gap: 28px;
-  padding-bottom: 7px;
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--ink);
+  justify-content: center;
+  height: clamp(72px, 6.6vw, 96px);
 }
 
-.support-copy > a span {
-  color: var(--orange);
-  font-size: 16px;
-}
+.support-logos li:nth-child(1) img { height: clamp(34px, 3.4vw, 46px); }
+.support-logos li:nth-child(2) img { height: clamp(30px, 3vw, 42px); }
+.support-logos li:nth-child(3) img { height: clamp(70px, 6.4vw, 94px); }
 
-.organizers .section-heading {
-  margin-bottom: 72px;
-}
-
-.organizer-grid {
-  display: grid;
+.organizers > .section-number {
   max-width: var(--max);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(24px, 4vw, 64px);
+  margin: 0 auto 54px;
+}
+
+.organizer-rows {
+  max-width: var(--max);
   margin: 0 auto;
+  border-top: 1px solid rgba(46, 26, 71, 0.22);
+}
+
+.organizer-card:last-child {
+  border-bottom: 0;
 }
 
 .organizer-card {
   display: grid;
   min-width: 0;
-  grid-template-columns: clamp(180px, 19vw, 280px) minmax(0, 1fr);
+  grid-template-columns: clamp(120px, 12vw, 168px) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(24px, 3vw, 46px);
-  padding: clamp(28px, 4vw, 54px);
-  background: rgba(242, 241, 234, 0.58);
-  border: 1px solid rgba(8, 17, 29, 0.15);
+  gap: clamp(28px, 4vw, 64px);
+  padding: clamp(34px, 3.6vw, 52px) 0;
+  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
 }
 
 .organizer-photo {
@@ -1337,7 +1370,7 @@ h2 em {
   background: var(--ink-soft);
   border: 5px solid var(--paper);
   border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(8, 17, 29, 0.18), 0 18px 38px rgba(8, 17, 29, 0.13);
+  box-shadow: 0 0 0 1px rgba(46, 26, 71, 0.18), 0 18px 38px rgba(46, 26, 71, 0.13);
 }
 
 .organizer-photo::after {
@@ -1388,7 +1421,7 @@ h2 em {
 
 .organizer-role {
   margin: 0;
-  color: rgba(8, 17, 29, 0.5);
+  color: rgba(46, 26, 71, 0.75);
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.12em;
@@ -1403,8 +1436,9 @@ h2 em {
 }
 
 .organizer-info > p:not(.organizer-role) {
+  max-width: 74ch;
   margin: 0;
-  color: rgba(8, 17, 29, 0.65);
+  color: rgba(46, 26, 71, 0.65);
   font-size: 14px;
   line-height: 1.65;
 }
@@ -1414,7 +1448,7 @@ h2 em {
   flex-wrap: wrap;
   gap: 10px 22px;
   padding-top: 18px;
-  border-top: 1px solid rgba(8, 17, 29, 0.2);
+  border-top: 1px solid rgba(46, 26, 71, 0.2);
 }
 
 .organizer-links a {
@@ -1492,7 +1526,7 @@ h2 em {
 }
 
 .join-details strong {
-  font-family: Georgia, serif;
+  font-family: var(--serif);
   font-size: 20px;
   font-style: italic;
   font-weight: 400;
@@ -1505,7 +1539,7 @@ h2 em {
   left: -15vw;
   width: 80vw;
   height: 80vw;
-  border: 1px solid rgba(116, 183, 255, 0.1);
+  border: 1px solid rgba(239, 219, 178, 0.1);
   border-radius: 50%;
   transform: translateY(-50%);
 }
@@ -1513,7 +1547,7 @@ h2 em {
 .join-orbit::before,
 .join-orbit::after {
   position: absolute;
-  border: 1px solid rgba(116, 183, 255, 0.08);
+  border: 1px solid rgba(239, 219, 178, 0.08);
   border-radius: 50%;
   content: "";
 }
@@ -1575,19 +1609,35 @@ h2 em {
   .hero-copy { max-width: 850px; }
   .hero-visual { min-height: 550px; }
   .tensegrity-model { width: 500px; height: 500px; }
-  .hero-facts { grid-template-columns: repeat(2, 1fr); }
-  .hero-facts div:nth-child(2) { border-right: 0; }
-  .hero-facts div:nth-child(3), .hero-facts div:nth-child(4) { border-top: 1px solid var(--line-dark); }
+  .hero-facts { grid-template-columns: repeat(3, 1fr); }
 
   .mission-layout,
   .awards,
-  .support,
   .concept-video {
     grid-template-columns: 1fr;
     gap: 70px;
   }
 
+  .awards { grid-template-rows: none; }
+  .awards-intro,
+  .award-track-list,
+  .budget-note { grid-column: auto; grid-row: auto; }
+
   .mission-copy { max-width: 720px; }
+
+  /* The four program columns need 818px of minimum width, which overflows
+     between the drawer breakpoint and ~1000px. Tighter minimums below. */
+  .program-item {
+    grid-template-columns: 78px minmax(150px, 0.9fr) minmax(200px, 1.2fr) minmax(118px, 0.5fr);
+    gap: 24px;
+  }
+
+  /* Same problem in the stretch-goal panel: 906px of minimum width. */
+  .stretch-goal {
+    grid-template-columns: minmax(170px, 0.7fr) minmax(220px, 1.15fr) minmax(140px, 0.45fr);
+    gap: 30px;
+    padding: 34px 32px;
+  }
 }
 
 @media (max-width: 780px) {
@@ -1698,14 +1748,7 @@ h2 em {
   .award-track { grid-template-columns: 34px 1fr; gap: 18px; }
   .award-track > strong { grid-column: 2; justify-items: start; text-align: left; }
 
-  .budget-band { grid-template-columns: 1fr; gap: 48px; padding: 76px 22px; }
-  .budget-rules { grid-template-columns: 1fr; }
-  .budget-rules > div { padding-right: 0; }
-  .budget-rules > div + div { padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
-  .support { gap: 52px; padding: 82px 22px; }
-  .support-mark { width: min(82vw, 360px); margin: 0 auto; }
-  .organizer-grid { grid-template-columns: 1fr; gap: 72px; }
-  .organizer-card { grid-template-columns: min(36vw, 250px) minmax(0, 1fr); }
+  .organizer-card { grid-template-columns: min(24vw, 132px) minmax(0, 1fr); align-items: start; }
   .join { min-height: auto; grid-template-columns: 1fr; gap: 80px; }
   .join-details div { min-height: 76px; }
 
@@ -1722,14 +1765,17 @@ h2 em {
   .visual-label-top { right: 0; }
   .visual-label-bottom { left: 0; }
   .hero-facts { grid-template-columns: 1fr 1fr; }
+  .hero-facts div:nth-child(even) { border-right: 0; }
+  .hero-facts div:nth-child(n + 3) { border-top: 1px solid var(--line-dark); }
+  .hero-facts div:last-child { grid-column: 1 / -1; }
   .hero-facts strong { font-size: 30px; }
   .concept-video { padding: 76px 22px; }
   .video-frame { --video-caption-height: 96px; }
   .video-caption { align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; }
   .video-caption strong { text-align: left; }
-  .organizer-card { grid-template-columns: 1fr; text-align: center; }
-  .organizer-photo { width: min(66vw, 240px); margin: 0 auto; }
-  .organizer-links { justify-content: center; }
+  /* Rows hold even on the smallest screens; the portrait just shrinks. */
+  .organizer-card { grid-template-columns: 84px minmax(0, 1fr); gap: 20px; align-items: start; }
+  .organizer-info { gap: 12px; }
   .program-item { grid-template-columns: 1fr; }
   .program-description,
   .program-timing { grid-column: 1; }
@@ -1747,4 +1793,60 @@ h2 em {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+
+
+/* ---------------------------------------------------------------------
+   Brand + accessibility overrides
+   Clemson requires WCAG 2.1 AA on university sites: 4.5:1 for text under
+   19px, 3:1 for 24px+ (or 19px+ bold). Clemson Orange #F56600 only clears
+   3:1 on white and fails on Parchment, so small type and any type on
+   Parchment uses Campus Brick #B94700 or Regalia instead.
+   https://www.clemson.edu/brand/web/color.html
+   --------------------------------------------------------------------- */
+
+/* Muted text: raised to AA on white and on Parchment. */
+.section-number { color: rgba(46, 26, 71, 0.75); }
+.sequence-index { color: rgba(46, 26, 71, 0.75); }
+.program-title > p { color: rgba(46, 26, 71, 0.75); }
+.program-description { color: rgba(46, 26, 71, 0.82); }
+.program-timing span { color: rgba(46, 26, 71, 0.78); }
+.organizer-role { color: rgba(46, 26, 71, 0.78); }
+.organizer-info > p:not(.organizer-role) { color: rgba(46, 26, 71, 0.82); }
+.award-track p { color: rgba(46, 26, 71, 0.82); }
+.award-track > strong small { color: rgba(46, 26, 71, 0.75); }
+.mission-copy p:not(.lead) { color: rgba(46, 26, 71, 0.82); }
+
+/* Small orange type on white -> Campus Brick (6.4:1). */
+.requirement-number,
+.award-track > span { color: var(--campus-brick); }
+
+/* Anything on Parchment. Campus Brick clears 3:1 (large display type only);
+   small labels use Regalia at 7.9:1. */
+.section-warm h2 em,
+.budget-figure strong { color: var(--campus-brick); }
+
+.program-week,
+.budget-rules > div span { color: var(--regalia); }
+
+/* Orange on Regalia fails; the caption uses Parchment (7.9:1). */
+.video-caption span,
+.video-caption a { color: var(--parchment); }
+.video-caption a:hover,
+.video-caption a:focus-visible { color: var(--white); }
+
+/* Low-alpha white on Diploma. */
+.scroll-cue { color: rgba(255, 255, 255, 0.62); }
+.join-details span { color: rgba(255, 255, 255, 0.62); }
+.stretch-goal small { color: rgba(255, 255, 255, 0.62); }
+
+@media (max-width: 900px) {
+  .support-strip { margin-top: 60px; padding-top: 34px; }
+  .support-logos { gap: 34px 40px; }
+}
+
+@media (max-width: 620px) {
+  .support-logos { grid-template-columns: 1fr; gap: 30px; }
+  .support-logos li a { height: 84px; }
+  .support-name { max-width: none; }
 }
