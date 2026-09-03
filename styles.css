@@ -57,7 +57,7 @@ body.menu-open {
 
 /* Headings use Diploma; running text uses Goal Line (brand text colour).
    Scoped to the light sections so dark panels keep their own colours. */
-.section-light :is(h1, h2, h3, h4):not(.stretch-goal *),
+.section-light :is(h1, h2, h3, h4),
 .section-warm :is(h1, h2, h3, h4),
 a {
   color: inherit;
@@ -331,15 +331,21 @@ a {
   box-shadow: 0 0 0 5px rgba(245, 102, 0, 0.13);
 }
 
-.hero h1,
-.section-heading h2,
-.awards-intro h2,
-.join h2 {
+.hero h1 {
   margin: 0;
   font-size: clamp(56px, 7.3vw, 116px);
   font-weight: 770;
   line-height: 0.86;
   letter-spacing: -0.075em;
+}
+
+.section-heading h2,
+.organizers-heading {
+  margin: 0;
+  font-weight: 770;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
 }
 
 h1 em,
@@ -393,52 +399,82 @@ h2 em {
   font-weight: 750;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 38px;
+/* Kickoff panel. With the hero buttons gone this is the hero's call to
+   action, so it carries the weight they used to. White at 0.86 over
+   Diploma is 11.8:1; the Parchment-on-Diploma lead is 7.9:1. */
+.hero-kickoff {
+  max-width: 520px;
+  margin: 38px 0 0;
+  padding: 26px 30px 28px;
+  border-left: 3px solid var(--orange);
+  background: rgba(255, 255, 255, 0.07);
 }
 
-.button {
-  display: inline-flex;
-  min-height: 54px;
+.kickoff-lead {
+  margin: 0 0 20px;
+  color: var(--white);
+  font-size: clamp(20px, 1.9vw, 25px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.kickoff-facts {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kickoff-facts li {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding: 0 24px;
+  gap: 13px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.kickoff-icon {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  color: var(--orange);
+}
+
+.kickoff-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.kickoff-cal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  margin-top: 24px;
+  padding: 0 22px;
+  color: var(--ink);
+  background: var(--acid);
+  border-radius: 2px;
   font-size: 12px;
   font-weight: 750;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: 2px;
-  transition: transform 180ms ease, color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, background 180ms ease;
 }
 
-.button span {
-  font-size: 17px;
+.kickoff-cal .kickoff-icon {
+  color: currentColor;
 }
 
-.button-primary {
-  color: var(--ink);
-  background: var(--acid);
-}
-
-.button-primary:hover,
-.button-primary:focus-visible {
+.kickoff-cal:hover,
+.kickoff-cal:focus-visible {
   background: var(--orange);
-  transform: translateY(-3px);
-}
-
-.button-quiet {
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.button-quiet:hover,
-.button-quiet:focus-visible {
-  color: var(--ink);
-  background: var(--white);
   transform: translateY(-3px);
 }
 
@@ -654,10 +690,8 @@ h2 em {
 
 .mission,
 .program,
-.judging,
 .awards,
-.organizers,
-.join {
+.organizers {
   padding: 130px clamp(22px, 6vw, 96px);
 }
 
@@ -674,15 +708,18 @@ h2 em {
   max-width: 570px;
 }
 
+.concept-copy h2 { max-width: 15ch; }
+
 .concept-copy .section-number {
   color: rgba(255, 255, 255, 0.5);
 }
 
 .concept-copy h2 {
   margin: 0;
-  font-size: clamp(46px, 5.5vw, 80px);
-  line-height: 0.94;
-  letter-spacing: -0.065em;
+  font-size: clamp(32px, 3.9vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
 }
 
 .concept-copy h2 em {
@@ -797,20 +834,27 @@ h2 em {
 }
 
 .section-heading .section-number,
-.awards-intro .section-number,
 .budget-figure .section-number {
   color: rgba(46, 26, 71, 0.75);
 }
 
 .section-heading h2,
-.awards-intro h2,
-.join h2 {
-  font-size: clamp(49px, 6.6vw, 94px);
+.organizers-heading {
+  font-size: clamp(34px, 4.2vw, 58px);
+  max-width: 17ch;
 }
 
-.section-heading h2 em,
-.awards-intro h2 em {
+.split-heading h2 {
+  max-width: 20ch;
+}
+
+.section-heading h2 em {
   color: var(--orange);
+}
+
+.organizers-heading {
+  max-width: var(--max);
+  margin: 0 auto 54px;
 }
 
 .split-heading {
@@ -926,281 +970,162 @@ h2 em {
   line-height: 1.6;
 }
 
-.program-roadmap {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0;
-  border-top: 1px solid rgba(46, 26, 71, 0.3);
-  list-style: none;
-}
-
-.program-item {
+/* Four program components as cards. Borderless: the grid gap does the
+   separating, and each card is led by a strut-and-node icon drawn in the
+   same language as the mission-sequence icons. */
+.program-grid {
   display: grid;
-  grid-template-columns: 92px minmax(210px, 0.78fr) minmax(260px, 1.12fr) minmax(160px, 0.48fr);
-  align-items: start;
-  gap: 32px;
-  padding: 30px 0;
-  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
+  max-width: var(--max);
+  margin: 0 auto 56px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 52px 64px;
 }
 
-.program-week,
-.program-title > p,
-.program-timing span,
-.program-timing b {
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.program-icon {
+  display: block;
+  width: 58px;
+  height: 58px;
+  margin: 0 0 22px;
+  color: var(--ink);
 }
 
-.program-week {
-  padding-top: 3px;
-  color: var(--orange);
+.program-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.program-title > p {
-  margin: 0 0 10px;
-  color: rgba(46, 26, 71, 0.46);
+.program-icon circle {
+  fill: var(--node, var(--orange));
 }
 
-.program-title h3 {
-  margin: 0;
-  font-size: clamp(21px, 2vw, 28px);
+.program-card h3 {
+  margin: 0 0 12px;
+  font-size: clamp(21px, 2vw, 27px);
   line-height: 1.08;
   letter-spacing: -0.045em;
 }
 
-.program-description {
+.program-card > p {
   margin: 0;
-  color: rgba(46, 26, 71, 0.65);
+  max-width: 46ch;
   font-size: 14px;
   line-height: 1.65;
 }
 
-.program-timing {
+.program-support {
   display: grid;
-  justify-items: end;
-  gap: 10px;
-  text-align: right;
-}
-
-.program-timing span {
-  max-width: 185px;
-  color: rgba(46, 26, 71, 0.62);
-  line-height: 1.45;
-}
-
-.program-timing b { color: var(--orange); }
-
-.program-item-final {
-  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
-}
-
-.program-item-final .program-title h3 {
-  display: inline;
-  padding-bottom: 4px;
-  border-bottom: 3px solid var(--orange);
-}
-
-.judging {
-  border-top: 1px solid var(--line);
-}
-
-.judging .section-number { color: rgba(46, 26, 71, 0.75); }
-.judging .section-heading h2 em { color: var(--orange); }
-.judging .split-heading > p { color: rgba(46, 26, 71, 0.66); }
-
-.requirements-list {
   max-width: var(--max);
+  grid-template-columns: 58px minmax(200px, 0.7fr) minmax(320px, 1.35fr);
+  align-items: center;
+  gap: 34px;
   margin: 0 auto;
-  border-top: 1px solid var(--line);
-}
-
-.requirement {
-  display: grid;
-  grid-template-columns: 65px minmax(190px, 0.7fr) minmax(280px, 1.3fr) auto;
-  align-items: center;
-  gap: 30px;
-  min-height: 116px;
-  padding: 24px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.requirement-number {
-  color: var(--orange);
-  font-family: var(--serif);
-  font-size: 15px;
-  font-style: italic;
-}
-
-.requirement h3 {
-  margin: 0;
-  font-size: clamp(20px, 1.8vw, 27px);
-  line-height: 1.12;
-  letter-spacing: -0.04em;
-}
-
-.requirement p {
-  margin: 0;
-  color: rgba(46, 26, 71, 0.64);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.requirement > strong {
-  padding: 8px 11px;
+  padding: 34px 42px;
   color: var(--white);
   background: var(--ink);
-  font-size: 9px;
-  letter-spacing: 0.12em;
+  --node: var(--parchment);
+}
+
+.program-support .program-icon {
+  margin: 0;
+  color: var(--white);
+}
+
+.program-support h3 {
+  margin: 0;
+  font-size: clamp(20px, 1.9vw, 26px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+
+.program-support > p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+
+/* Design awards: three borderless items in one row, each led by an icon
+   drawn in the same strut-and-node language as the program icons. */
+.awards .section-heading {
+  margin-bottom: 30px;
+}
+
+.awards-note {
+  max-width: 76ch;
+  margin: 0 auto 58px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.awards-note,
+.award-row {
+  max-width: var(--max);
+}
+
+.award-row {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.award-icon {
+  display: block;
+  width: 54px;
+  height: 54px;
+  margin: 0 0 22px;
+  color: var(--ink);
+}
+
+.award-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.award-icon circle {
+  fill: var(--orange);
+}
+
+.award-place {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.stretch-goal {
+.award-amount {
+  margin: 12px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(44px, 5vw, 68px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.award-amount span {
+  font-size: 0.42em;
+  letter-spacing: 0;
+}
+
+/* Build budget, carried into the program section under the support strip. */
+.budget-note {
   display: grid;
   max-width: var(--max);
-  grid-template-columns: minmax(230px, 0.7fr) minmax(320px, 1.15fr) minmax(180px, 0.45fr);
+  grid-template-columns: minmax(190px, 0.5fr) minmax(300px, 1.3fr);
   align-items: center;
-  gap: 46px;
-  margin: 58px auto 0;
-  padding: 38px 42px;
-  color: var(--white);
-  background: var(--ink);
-}
-
-.stretch-goal span {
-  color: var(--acid);
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.stretch-goal h3 {
-  margin: 9px 0 0;
-  font-family: var(--serif);
-  font-size: clamp(28px, 3vw, 42px);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.045em;
-}
-
-.stretch-goal p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 14px;
-  line-height: 1.65;
-}
-
-.stretch-goal small {
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 10px;
-  font-weight: 650;
-  line-height: 1.55;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.awards {
-  display: grid;
-  grid-template-columns: minmax(320px, 0.85fr) minmax(400px, 1.15fr);
-  grid-template-rows: auto 1fr;
-  align-items: start;
-  gap: clamp(38px, 4vw, 56px) clamp(48px, 7vw, 110px);
-  border-top: 1px solid var(--line);
-}
-
-.awards-intro {
-  align-self: start;
-}
-
-.awards-intro > p:last-child {
-  max-width: 500px;
-  margin: 34px 0 0;
-  color: rgba(46, 26, 71, 0.62);
-  font-size: 17px;
-  line-height: 1.65;
-}
-
-.award-track-list {
-  border-top: 1px solid var(--line);
-}
-
-.award-track {
-  display: grid;
-  grid-template-columns: 42px 1fr auto;
-  align-items: center;
-  gap: 25px;
-  min-height: 142px;
-  padding: 25px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.award-track > span {
-  align-self: start;
-  padding-top: 5px;
-  color: var(--orange);
-  font-family: var(--serif);
-  font-size: 14px;
-  font-style: italic;
-}
-
-.award-track h3 {
-  margin: 0;
-  font-size: clamp(23px, 2.4vw, 34px);
-  letter-spacing: -0.045em;
-}
-
-.award-track p {
-  max-width: 530px;
-  margin: 9px 0 0;
-  color: rgba(46, 26, 71, 0.6);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.award-track > strong {
-  display: grid;
-  min-width: 110px;
-  justify-items: end;
-  text-align: right;
-}
-
-.award-track > strong b {
-  color: var(--orange);
-  font-family: var(--serif);
-  font-size: clamp(30px, 3.1vw, 44px);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.045em;
-}
-
-.award-track > strong small {
-  color: rgba(46, 26, 71, 0.75);
-  font-size: 9px;
-  font-weight: 750;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* Rides in the awards intro column, directly under the prize copy, so the
-   prize money and the build money read as one thought. It comes last in the
-   source so it falls below the prize list once the section is one column. */
-.awards-intro {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.award-track-list {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-}
-
-.budget-note {
-  grid-column: 1;
-  grid-row: 2;
+  gap: 22px 60px;
+  margin: 56px auto 0;
   padding-top: clamp(30px, 2.8vw, 40px);
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(46, 26, 71, 0.3);
 }
 
 .budget-figure .section-number {
@@ -1218,47 +1143,12 @@ h2 em {
   letter-spacing: -0.05em;
 }
 
-.budget-figure span {
-  display: block;
-  margin-top: 14px;
-  color: rgba(46, 26, 71, 0.82);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.budget-rules {
-  display: grid;
-  margin: 26px 0 0;
-  border-top: 1px solid rgba(46, 26, 71, 0.22);
-}
-
-.budget-rules > div {
-  display: grid;
-  gap: 7px;
-  padding: 17px 0;
-  border-bottom: 1px solid rgba(46, 26, 71, 0.22);
-}
-
-.budget-rules dt {
-  color: var(--regalia);
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.budget-rules dd {
+.budget-copy {
+  align-self: center;
+  max-width: 52ch;
   margin: 0;
-  color: rgba(46, 26, 71, 0.82);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.budget-footnote {
-  margin: 18px 0 0;
-  color: rgba(46, 26, 71, 0.75);
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 /* Supporter strip at the foot of the organizers section.
@@ -1335,11 +1225,6 @@ h2 em {
 .support-logos li:nth-child(1) img { height: clamp(34px, 3.4vw, 46px); }
 .support-logos li:nth-child(2) img { height: clamp(30px, 3vw, 42px); }
 .support-logos li:nth-child(3) img { height: clamp(70px, 6.4vw, 94px); }
-
-.organizers > .section-number {
-  max-width: var(--max);
-  margin: 0 auto 54px;
-}
 
 .organizer-rows {
   max-width: var(--max);
@@ -1464,124 +1349,21 @@ h2 em {
   color: var(--orange);
 }
 
-.join {
-  position: relative;
-  display: grid;
-  min-height: 760px;
-  grid-template-columns: minmax(0, 1.25fr) minmax(340px, 0.55fr);
-  align-items: center;
-  gap: 8vw;
-  overflow: hidden;
+/* Bottom ribbon. Sole place the page separates NASA support from NASA
+   endorsement, so it stays even though everything else in the footer went.
+   White at 0.72 over Diploma clears AA for small text at 8.6:1. */
+.site-ribbon {
+  padding: 26px clamp(22px, 6vw, 96px);
+  color: rgba(255, 255, 255, 0.72);
+  background: var(--ink);
 }
 
-.join-copy,
-.join-details {
-  position: relative;
-  z-index: 2;
+.site-ribbon p {
+  max-width: var(--max);
+  margin: 0 auto;
+  font-size: 13px;
+  line-height: 1.6;
 }
-
-.join h2 em { color: var(--acid); }
-
-.join-copy > p:not(.eyebrow) {
-  max-width: 640px;
-  margin: 34px 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 18px;
-  line-height: 1.65;
-}
-
-.button-large {
-  min-height: 64px;
-  padding: 0 30px;
-}
-
-.email-link {
-  display: block;
-  width: fit-content;
-  margin-top: 20px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.join-details {
-  border-top: 1px solid var(--line-dark);
-}
-
-.join-details div {
-  display: flex;
-  min-height: 88px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  border-bottom: 1px solid var(--line-dark);
-}
-
-.join-details span {
-  color: rgba(255, 255, 255, 0.43);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.join-details strong {
-  font-family: var(--serif);
-  font-size: 20px;
-  font-style: italic;
-  font-weight: 400;
-  text-align: right;
-}
-
-.join-orbit {
-  position: absolute;
-  top: 50%;
-  left: -15vw;
-  width: 80vw;
-  height: 80vw;
-  border: 1px solid rgba(239, 219, 178, 0.1);
-  border-radius: 50%;
-  transform: translateY(-50%);
-}
-
-.join-orbit::before,
-.join-orbit::after {
-  position: absolute;
-  border: 1px solid rgba(239, 219, 178, 0.08);
-  border-radius: 50%;
-  content: "";
-}
-
-.join-orbit::before { inset: 15%; }
-.join-orbit::after { inset: 31%; }
-
-.site-footer {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 30px;
-  padding: 35px clamp(22px, 4vw, 64px);
-  color: rgba(255, 255, 255, 0.52);
-  background: #050b12;
-  font-size: 11px;
-}
-
-.site-footer p {
-  margin: 0;
-  text-align: center;
-}
-
-.site-footer > div {
-  display: flex;
-  justify-content: flex-end;
-  gap: 24px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.site-footer > div a:hover,
-.site-footer > div a:focus-visible { color: var(--acid); }
 
 .reveal {
   opacity: 0;
@@ -1612,35 +1394,17 @@ h2 em {
   .hero-facts { grid-template-columns: repeat(3, 1fr); }
 
   .mission-layout,
-  .awards,
   .concept-video {
     grid-template-columns: 1fr;
     gap: 70px;
   }
 
-  .awards { grid-template-rows: none; }
-  .awards-intro,
-  .award-track-list,
-  .budget-note { grid-column: auto; grid-row: auto; }
-
   .mission-copy { max-width: 720px; }
 
-  /* The four program columns need 818px of minimum width, which overflows
-     between the drawer breakpoint and ~1000px. Tighter minimums below. */
-  .program-item {
-    grid-template-columns: 78px minmax(150px, 0.9fr) minmax(200px, 1.2fr) minmax(118px, 0.5fr);
-    gap: 24px;
-  }
-
-  /* Same problem in the stretch-goal panel: 906px of minimum width. */
-  .stretch-goal {
-    grid-template-columns: minmax(170px, 0.7fr) minmax(220px, 1.15fr) minmax(140px, 0.45fr);
-    gap: 30px;
-    padding: 34px 32px;
-  }
+  .award-row { gap: 34px; }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 900px) {
   .site-header { height: 68px; }
   .menu-button { position: relative; z-index: 102; display: block; }
   .menu-button[aria-expanded="true"] > span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -1691,6 +1455,11 @@ h2 em {
     border: 0;
   }
 
+  /* The desktop nav needs more room than the wordmark leaves below ~900px. */
+  .support-logos li:nth-child(2) img { height: clamp(30px, 4.4vw, 42px); }
+}
+
+@media (max-width: 780px) {
   .hero {
     padding: 120px 22px 28px;
   }
@@ -1710,56 +1479,39 @@ h2 em {
 
   .mission,
   .program,
-  .judging,
   .awards,
-  .organizers,
-  .join {
+  .organizers {
     padding: 92px 22px;
   }
 
   .section-heading { margin-bottom: 60px; }
   .section-heading h2,
-  .awards-intro h2,
-  .join h2 { font-size: clamp(43px, 12vw, 66px); }
+  .organizers-heading { font-size: clamp(30px, 7.6vw, 42px); max-width: none; }
+  .organizers-heading { margin-bottom: 34px; }
+  .concept-copy h2 { font-size: clamp(28px, 7vw, 38px); }
 
   .split-heading { grid-template-columns: 1fr; gap: 30px; }
   .mission-sequence { grid-template-columns: 1fr; }
   .mission-sequence article { min-height: auto; padding: 24px; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .sequence-icon { width: 180px; height: 130px; margin: 12px auto 20px; }
 
-  .program-item {
-    grid-template-columns: 70px 1fr;
-    gap: 18px 22px;
-    padding: 27px 0;
-  }
-  .program-description { grid-column: 2; }
-  .program-timing { display: flex; grid-column: 2; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 8px 18px; text-align: left; }
-  .program-timing span { max-width: none; }
+  .program-grid { grid-template-columns: 1fr; gap: 40px; margin-bottom: 40px; }
+  .program-support { grid-template-columns: 1fr; gap: 16px; padding: 28px 24px; }
+  .program-support .program-icon { margin-bottom: 4px; }
 
-  .requirement {
-    grid-template-columns: 42px 1fr auto;
-    gap: 15px 20px;
-    padding: 25px 0;
-  }
-  .requirement p { grid-column: 2 / -1; }
-  .stretch-goal { grid-template-columns: 1fr; gap: 22px; padding: 34px 28px; }
+  .award-row { grid-template-columns: 1fr; gap: 40px; }
+  .awards-note { margin-bottom: 46px; }
 
   .awards { gap: 60px; }
-  .award-track { grid-template-columns: 34px 1fr; gap: 18px; }
-  .award-track > strong { grid-column: 2; justify-items: start; text-align: left; }
+  .budget-note { grid-template-columns: 1fr; gap: 24px; }
 
   .organizer-card { grid-template-columns: min(24vw, 132px) minmax(0, 1fr); align-items: start; }
-  .join { min-height: auto; grid-template-columns: 1fr; gap: 80px; }
-  .join-details div { min-height: 76px; }
 
-  .site-footer { grid-template-columns: 1fr; justify-items: start; }
-  .site-footer p { text-align: left; }
-  .site-footer > div { justify-content: flex-start; }
 }
 
 @media (max-width: 420px) {
-  .hero-actions { display: grid; }
-  .button { width: 100%; }
+  .hero-kickoff { padding: 22px 24px 24px; }
+  .kickoff-cal { width: 100%; justify-content: center; }
   .hero-visual { min-height: 360px; }
   .tensegrity-model { width: 300px; height: 300px; }
   .visual-label-top { right: 0; }
@@ -1767,7 +1519,7 @@ h2 em {
   .hero-facts { grid-template-columns: 1fr 1fr; }
   .hero-facts div:nth-child(even) { border-right: 0; }
   .hero-facts div:nth-child(n + 3) { border-top: 1px solid var(--line-dark); }
-  .hero-facts div:last-child { grid-column: 1 / -1; }
+  .hero-facts div:last-child { grid-column: 1 / -1; padding-left: 0; }
   .hero-facts strong { font-size: 30px; }
   .concept-video { padding: 76px 22px; }
   .video-frame { --video-caption-height: 96px; }
@@ -1776,12 +1528,6 @@ h2 em {
   /* Rows hold even on the smallest screens; the portrait just shrinks. */
   .organizer-card { grid-template-columns: 84px minmax(0, 1fr); gap: 20px; align-items: start; }
   .organizer-info { gap: 12px; }
-  .program-item { grid-template-columns: 1fr; }
-  .program-description,
-  .program-timing { grid-column: 1; }
-  .requirement { grid-template-columns: 34px 1fr; }
-  .requirement p,
-  .requirement > strong { grid-column: 2; justify-self: start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1808,26 +1554,21 @@ h2 em {
 /* Muted text: raised to AA on white and on Parchment. */
 .section-number { color: rgba(46, 26, 71, 0.75); }
 .sequence-index { color: rgba(46, 26, 71, 0.75); }
-.program-title > p { color: rgba(46, 26, 71, 0.75); }
-.program-description { color: rgba(46, 26, 71, 0.82); }
-.program-timing span { color: rgba(46, 26, 71, 0.78); }
+.program-card > p { color: rgba(46, 26, 71, 0.82); }
 .organizer-role { color: rgba(46, 26, 71, 0.78); }
 .organizer-info > p:not(.organizer-role) { color: rgba(46, 26, 71, 0.82); }
-.award-track p { color: rgba(46, 26, 71, 0.82); }
-.award-track > strong small { color: rgba(46, 26, 71, 0.75); }
+.awards-note { color: rgba(46, 26, 71, 0.82); }
 .mission-copy p:not(.lead) { color: rgba(46, 26, 71, 0.82); }
 
 /* Small orange type on white -> Campus Brick (6.4:1). */
-.requirement-number,
-.award-track > span { color: var(--campus-brick); }
 
 /* Anything on Parchment. Campus Brick clears 3:1 (large display type only);
    small labels use Regalia at 7.9:1. */
 .section-warm h2 em,
-.budget-figure strong { color: var(--campus-brick); }
+.budget-figure strong,
+.award-amount { color: var(--campus-brick); }
 
-.program-week,
-.budget-rules > div span { color: var(--regalia); }
+.award-place { color: var(--regalia); }
 
 /* Orange on Regalia fails; the caption uses Parchment (7.9:1). */
 .video-caption span,
@@ -1837,8 +1578,6 @@ h2 em {
 
 /* Low-alpha white on Diploma. */
 .scroll-cue { color: rgba(255, 255, 255, 0.62); }
-.join-details span { color: rgba(255, 255, 255, 0.62); }
-.stretch-goal small { color: rgba(255, 255, 255, 0.62); }
 
 @media (max-width: 900px) {
   .support-strip { margin-top: 60px; padding-top: 34px; }
@@ -1848,5 +1587,6 @@ h2 em {
 @media (max-width: 620px) {
   .support-logos { grid-template-columns: 1fr; gap: 30px; }
   .support-logos li a { height: 84px; }
+  .support-logos li:nth-child(2) img { height: 46px; }
   .support-name { max-width: none; }
 }
