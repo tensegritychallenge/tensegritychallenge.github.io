@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Tensegrity Challenge//Kickoff Event//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kickoff-20260914@tensegritychallenge.github.io
+DTSTAMP:20260903T120000Z
+DTSTART:20260914T210000Z
+DTEND:20260914T220000Z
+SUMMARY:Tensegrity Challenge Kickoff
+LOCATION:Cooper Library\, Classroom 200B\, Clemson University
+DESCRIPTION:Kickoff for the Clemson Tensegrity Challenge. Meet the organizers\, form a team\, and pick up the mission handbook.\n\nQuestions: tensegritychallenge@gmail.com
+URL:https://tensegritychallenge.github.io/
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
