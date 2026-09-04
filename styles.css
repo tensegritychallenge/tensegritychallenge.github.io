@@ -43,6 +43,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keep fixed navigation from covering section headings after anchor jumps. */
+section[id] {
+  scroll-margin-top: 86px;
+}
+
 body {
   margin: 0;
   color: var(--body-text);
@@ -1365,6 +1370,52 @@ h2 em {
   line-height: 1.6;
 }
 
+/* Small recruitment note after the organizer/support information. */
+.assistant-opportunity {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.55fr) minmax(0, 1.3fr) auto;
+  align-items: center;
+  gap: 22px 40px;
+  max-width: var(--max);
+  margin: 54px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.assistant-opportunity h3 {
+  margin: 0;
+  font-size: clamp(20px, 2vw, 27px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+}
+
+.assistant-opportunity p {
+  max-width: 58ch;
+  margin: 0;
+  color: rgba(46, 26, 71, 0.82);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.assistant-opportunity a {
+  min-height: 44px;
+  padding: 13px 16px;
+  color: var(--white);
+  background: var(--ink);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.assistant-opportunity a:hover,
+.assistant-opportunity a:focus-visible {
+  background: var(--campus-brick);
+  transform: translateY(-2px);
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -1405,6 +1456,8 @@ h2 em {
 }
 
 @media (max-width: 900px) {
+  section[id] { scroll-margin-top: 76px; }
+
   .site-header { height: 68px; }
   .menu-button { position: relative; z-index: 102; display: block; }
   .menu-button[aria-expanded="true"] > span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -1506,6 +1559,9 @@ h2 em {
   .budget-note { grid-template-columns: 1fr; gap: 24px; }
 
   .organizer-card { grid-template-columns: min(24vw, 132px) minmax(0, 1fr); align-items: start; }
+
+  .assistant-opportunity { grid-template-columns: 1fr; gap: 16px; }
+  .assistant-opportunity a { justify-self: start; }
 
 }
 
