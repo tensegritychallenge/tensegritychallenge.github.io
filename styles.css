@@ -473,14 +473,58 @@ h2 em {
   transition: transform 180ms ease, background 180ms ease;
 }
 
-.kickoff-cal .kickoff-icon {
-  color: currentColor;
-}
+.kickoff-cal .kickoff-icon { color: currentColor; }
 
 .kickoff-cal:hover,
 .kickoff-cal:focus-visible {
   background: var(--orange);
   transform: translateY(-3px);
+}
+
+.hero-kickoff-slides {
+  max-width: 520px;
+  margin: 16px 0 0;
+  padding: 18px 24px 20px;
+  border-left: 3px solid var(--acid);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.hero-kickoff-slides p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.hero-kickoff-slides .slides-label {
+  margin-bottom: 5px;
+  color: var(--acid);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.kickoff-slides {
+  display: inline-block;
+  margin-top: 10px;
+  padding-bottom: 3px;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 750;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.kickoff-slides:hover,
+.kickoff-slides:focus-visible {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+.kickoff-reminder {
+  max-width: 430px;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .hero-visual {
