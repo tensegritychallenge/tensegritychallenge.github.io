@@ -4,10 +4,10 @@ PRODID:-//Tensegrity Challenge//Workshop 01//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:workshop-01-20261002@tensegritychallenge.github.io
+UID:workshop-01-20261006@tensegritychallenge.github.io
 DTSTAMP:20260903T120000Z
-DTSTART:20261002T213000Z
-DTEND:20261002T223000Z
+DTSTART:20261006T213000Z
+DTEND:20261006T223000Z
 SUMMARY:Tensegrity Challenge Workshop 01
 LOCATION:Cooper 204\, Clemson University
 DESCRIPTION:First workshop session for the Clemson Tensegrity Challenge. Registration closes after this workshop.\n\nQuestions: tensegritychallenge@gmail.com
