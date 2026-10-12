@@ -302,7 +302,6 @@ a {
 
 .hero-copy,
 .hero-visual,
-.hero-facts,
 .scroll-cue {
   position: relative;
   z-index: 2;
@@ -679,41 +678,6 @@ h2 em {
 
 .visual-label-top { top: 14%; right: 2%; }
 .visual-label-bottom { bottom: 13%; left: 2%; }
-
-.hero-facts {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line-dark);
-}
-
-.hero-facts div {
-  display: flex;
-  align-items: baseline;
-  gap: 11px;
-  padding: 22px 0 6px;
-  border-right: 1px solid var(--line-dark);
-}
-
-.hero-facts div:not(:first-child) { padding-left: 26px; }
-.hero-facts div:last-child { border-right: 0; }
-
-.hero-facts strong {
-  color: var(--acid);
-  font-family: var(--serif);
-  font-size: clamp(28px, 3vw, 42px);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.05em;
-}
-
-.hero-facts span {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  font-weight: 650;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 
 .scroll-cue {
   position: absolute;
@@ -1486,7 +1450,6 @@ h2 em {
   .hero-copy { max-width: 850px; }
   .hero-visual { min-height: 550px; }
   .tensegrity-model { width: 500px; height: 500px; }
-  .hero-facts { grid-template-columns: repeat(3, 1fr); }
 
   .mission-layout,
   .concept-video {
@@ -1568,10 +1531,6 @@ h2 em {
   .bar span { width: 29px; height: 29px; border-width: 5px; }
   .payload { width: 76px; height: 76px; border-width: 7px; }
   .payload span { font-size: 21px; }
-  .hero-facts div { display: block; min-height: 84px; padding: 18px 10px 12px 0; }
-  .hero-facts div:not(:first-child) { padding-left: 18px; }
-  .hero-facts strong, .hero-facts span { display: block; }
-  .hero-facts span { margin-top: 3px; line-height: 1.45; }
   .scroll-cue { display: none; }
 
   .mission,
@@ -1616,11 +1575,6 @@ h2 em {
   .tensegrity-model { width: 300px; height: 300px; }
   .visual-label-top { right: 0; }
   .visual-label-bottom { left: 0; }
-  .hero-facts { grid-template-columns: 1fr 1fr; }
-  .hero-facts div:nth-child(even) { border-right: 0; }
-  .hero-facts div:nth-child(n + 3) { border-top: 1px solid var(--line-dark); }
-  .hero-facts div:last-child { grid-column: 1 / -1; padding-left: 0; }
-  .hero-facts strong { font-size: 30px; }
   .concept-video { padding: 76px 22px; }
   .video-frame { --video-caption-height: 96px; }
   .video-caption { align-items: flex-start; flex-direction: column; justify-content: center; gap: 4px; }
